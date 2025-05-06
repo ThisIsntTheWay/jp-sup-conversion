@@ -28,7 +28,7 @@ def convert_file(file_path):
         shutil.rmtree("subimg")
     
     print(colored(f"[i] Converting to png...", "cyan"))
-    if os.system(f"vobsub2png -o subimg {output_file_base + '.idx'}") == 0:
+    if os.system(f"vobsub2png -o subimg \"{output_file_base + '.idx'}\"") == 0:
         print(colored(f"[✓] Converted to png", "green"))
     else:
         raise Exception(f"Error converting idx to png!")
