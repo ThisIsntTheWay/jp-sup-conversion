@@ -1,0 +1,9 @@
+# Subs
+*.sup
+*.idx
+*.sub
+*.ass
+
+# Other stuff
+*.jar
+*.sh
