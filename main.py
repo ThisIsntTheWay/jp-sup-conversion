@@ -34,7 +34,7 @@ def convert_file(file_path):
         raise Exception(f"Error converting idx to png!")
 
 """
-OCR pngs into SRT
+OCR pngs into ASS
 """
 def process_sub(subtitle_name, output_folder=".", mocr=MangaOcr()):
     print(colored(f"[i] Converting to ass...", "cyan"))

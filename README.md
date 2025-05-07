@@ -1,4 +1,4 @@
-# SUP to ASS
+# SUP to ASS conversions
 Script to convert SUPs into ASS subtitles using `manga-ocr`.  
 
 Basically another take on [VobSubConvertJp](https://github.com/naipofo/VobSubConvertJp), but using a newer `manga-ocr` version and with all dependencies conveniently packaged into a container image.
