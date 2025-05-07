@@ -79,15 +79,21 @@ def main():
                 convert_file(file_path)
                 process_sub(file_path, folder_path, mocr)
                 
-                # Cleanup
-                print(colored(f"[!] Cleaning .idx and .sub files...", "yellow"))
-                for file in files:
-                    if file.endswith(".idx") or file.endswith(".sub"):
-                        file_path = os.path.join(root, file)
-                        os.remove(file_path)
-                
         if valid_files == 0:
-            print(colored(f"[!] No .sup files found in {root}", "yellow"))
+            raise Exception(f"No .sup files found in directory '{root}'")
+        
+    # Cleanup, but if in docker only do so if CWD == folder_path
+    if os.path.exists('/.dockerenv') and os.getcwd() != folder_path:
+        return
+        
+    print(colored(f"[!] Cleaning .idx and .sub files...", "yellow"))
+    for root, _, files in os.walk(os.getcwd()):
+        for file in files:
+            if file.endswith(".idx") or file.endswith(".sub"):
+                file_path = os.path.join(root, file)
+                os.remove(file_path)
+    if os.path.exists("subimg") and os.path.isdir("subimg"):
+        shutil.rmtree("subimg")
             
 if __name__ == "__main__":
     main()
