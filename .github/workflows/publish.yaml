@@ -7,6 +7,12 @@ on:
     paths-ignore:
       - '.gitignore'
       - '**/*.md'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to push'
+        required: true
+        default: 'latest'
 
 jobs:
   build-and-push:
@@ -46,6 +52,6 @@ jobs:
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v2
         with:
-          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME}}
+          subject-name: ghcr.io/${{ github.repository }}
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
