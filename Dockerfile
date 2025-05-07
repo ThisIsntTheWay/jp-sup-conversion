@@ -1,7 +1,7 @@
 #!/bin/env python3
 # vobsub2png fails to install on versions around 1.86
 FROM rust:1.82 AS vobsub
-RUN cargo install vobsub2png
+RUN cargo install vobsub2png@0.1.4
 
 # -------------------------------
 FROM python:3.12-slim
