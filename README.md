@@ -6,14 +6,20 @@ Basically another take on [VobSubConvertJp](https://github.com/naipofo/VobSubCon
 >[!WARNING]
 >This won't produce perfect subtitles, but it'll produce good enough results
 
-## Usage
+## Usage with docker
 1. Place all `.sup` files into some folder, e.g. `subtitles`
 2. Run containierized script against folder
 ```bash
-docker run --rm -v $(pwd)/subtitles:/app/subtitles docker pull ghcr.io/thisisnttheway/jp-sup-conversion:main subtitles 
+docker run --rm --gpus all                             \
+    -v $(pwd)/subtitles:/app/subtitles                 \
+    -t ghcr.io/thisisnttheway/jp-sup-conversion:latest \
+    subtitles
 ```
 
-### Use without docker
+>[!NOTE]
+>The flag `--gpus` requires the `nvidia-container-toolkit` package 
+
+## Ussage without docker
 1. Clone repo
 2. Ensure [`vobsub2png`](https://crates.io/crates/vobsub2png) is installed
 3. Ensure Java is installed and [`BDSup2Sub.jar`](https://raw.githubusercontent.com/wiki/mjuhasz/BDSup2Sub/downloads/BDSup2Sub.jar) is in the same place as the script (`main.py`)
