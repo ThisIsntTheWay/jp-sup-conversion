@@ -1,4 +1,4 @@
-# SUP to ASS conversions
+# SUP to ASS conversion
 Script to convert SUPs into ASS subtitles using `manga-ocr`.  
 
 Basically another take on [VobSubConvertJp](https://github.com/naipofo/VobSubConvertJp), but using a newer `manga-ocr` version and with all dependencies conveniently packaged into a container image.
@@ -17,9 +17,10 @@ docker run --rm --gpus all                             \
 ```
 
 >[!NOTE]
->The flag `--gpus` requires the `nvidia-container-toolkit` package 
+>To use CUDA, ensure that the package `nvidia-container-toolkit` has been installed.  
+>Otherwise, omit the `--gpu` argument.
 
-## Ussage without docker
+## Usage without docker
 1. Clone repo
 2. Ensure [`vobsub2png`](https://crates.io/crates/vobsub2png) is installed
 3. Ensure Java is installed and [`BDSup2Sub.jar`](https://raw.githubusercontent.com/wiki/mjuhasz/BDSup2Sub/downloads/BDSup2Sub.jar) is in the same place as the script (`main.py`)
