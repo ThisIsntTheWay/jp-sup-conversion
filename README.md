@@ -7,15 +7,10 @@ Basically another take on [VobSubConvertJp](https://github.com/naipofo/VobSubCon
 >This won't produce perfect subtitles, but it'll produce good enough results
 
 ## Usage
-1. Clone repo
-2. Build container image
+1. Place all `.sup` files into some folder, e.g. `subtitles`
+2. Run containierized script against folder
 ```bash
-docker build . -t sup-to-ass:local
-```
-3. Place all `.sup` files into some folder, e.g. `subtitles`
-4. Run containierized script against folder
-```bash
-docker run --rm -v $(pwd)/subtitles:/app/subtitles sup-to-ass:local subtitles 
+docker run --rm -v $(pwd)/subtitles:/app/subtitles docker pull ghcr.io/thisisnttheway/jp-sup-conversion:main subtitles 
 ```
 
 ### Use without docker
